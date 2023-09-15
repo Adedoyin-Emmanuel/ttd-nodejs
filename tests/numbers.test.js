@@ -1,6 +1,6 @@
 const { add, subtract, absolute } = require("./../libs/numbers");
 
-describe("numbers", () => {
+describe("Numbers", () => {
   it("should add a number to the other", () => {
     const result = add(2, 2);
     expect(result).toEqual(4);
@@ -45,5 +45,5 @@ describe("numbers", () => {
     expect(result).toBe(0);
   });
 
-
+ 
 });
