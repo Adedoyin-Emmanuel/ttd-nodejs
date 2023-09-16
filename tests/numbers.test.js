@@ -6,6 +6,11 @@ describe("Numbers", () => {
     expect(result).toEqual(4);
   });
 
+  it("should add a float to another", () => {
+    const result = add(2.8, 2.8);
+    expect(result).toBeCloseTo(5.6);
+  });
+
   it("should throw an error if argument is not a number", () => {
     expect(() => {
       add(undefined, undefined);
@@ -44,6 +49,4 @@ describe("Numbers", () => {
     const result = absolute(0);
     expect(result).toBe(0);
   });
-
- 
 });

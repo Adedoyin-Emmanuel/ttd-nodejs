@@ -1,4 +1,4 @@
-const { getPosition, getUser } = require("./../libs/objects");
+const { getPosition, getUser } = require("../libs/objects");
 
 describe("Objects", () => {
   it("should return a location object with city, logitude and latitude", () => {
