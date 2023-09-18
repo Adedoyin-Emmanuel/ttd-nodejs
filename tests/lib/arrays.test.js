@@ -1,4 +1,4 @@
-const { supportedNetworks, supportedClasses } = require("../libs/arrays");
+const { supportedNetworks, supportedClasses } = require("./../../libs/arrays");
 
 describe("Arrays", () => {
   it("should return supported ethereum networks", () => {
