@@ -55,4 +55,4 @@ So far, I've learned **Unit Testing** and the best practices involved in unit te
 
 ### Integration Testing 🧪
 
-Integration testing can be defined as the act of writing tests for major parts of an application. It involves writing real time tests that actually interacts with our Database or our APIS. For intgration testing, we would be using a library called **Supertest** along side with **Jest** the **Supertest** was built on top of the super agent, we can use the **Supertest** to test our API's their response or errors and all. I can't wait to get started
+Integration testing can be defined as the act of writing tests for major parts of an application. It involves writing real time tests that actually interacts with our Database or our APIS. For intgration testing, we would be using a library called **Supertest** along side with **Jest** the **Supertest** was built on top of the super agent, we can use the **Supertest** to test our API's their response or errors and all. I can't wait to get started. So we might need to convert this into an **Express** application so we can fully test the API's so yeah we would make updates 😃
