@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const { response } = require("./../utils");
+const { response } = require("../utils");
 
 router.get("/", (req, res) => {
   response(res, 200, "Welcome to todo API");

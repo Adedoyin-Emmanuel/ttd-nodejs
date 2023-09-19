@@ -1,5 +1,5 @@
-const router = require("./todo");
+const router = require("./todo.route");
 
 module.exports = {
-  todoRouter,
+  todoRouter: router,
 };

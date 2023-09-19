@@ -9,7 +9,7 @@ const { todoRouter } = require("./routes");
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
-app.use(todoRouter);
+app.use("/api/todos", todoRouter);
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
