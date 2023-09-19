@@ -1,0 +1,7 @@
+{
+  "App": {
+    "db-config": {
+      "url": "localhost://mongodb/TodoApp"
+    }
+  }
+}
