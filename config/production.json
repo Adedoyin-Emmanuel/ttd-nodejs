@@ -1,7 +1,5 @@
 {
   "App": {
-    "db-config": {
-      "url": "localhost://mongodb/TodoApp"
-    }
+    "request-limit": 60
   }
 }
