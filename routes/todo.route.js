@@ -1,9 +1,9 @@
 const express = require("express");
 const router = express.Router();
-const { response } = require("../utils");
 const { TodoController } = require("./../controllers");
+const { limiter } = require("./../middlewares");
 
-router.get("/", (req, res) => {
+router.get("/", limiter, (req, res) => {
   TodoController.getAll(req, res);
 });
 

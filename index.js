@@ -6,7 +6,6 @@ const morgan = require("morgan");
 const { connectToDb } = require("./utils");
 const { todoRouter } = require("./routes");
 
-
 app.use(morgan("dev"));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
