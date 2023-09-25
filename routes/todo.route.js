@@ -19,8 +19,12 @@ router.put("/", (req, res) => {
   TodoController.update(req, res);
 });
 
-router.delete("/", (req, res) => {
+router.delete("/:id", (req, res) => {
   TodoController.delete(req, res);
+});
+
+router.all("*", (req, res) => {
+  TodoController.routeNotFound(req, res);
 });
 
 module.exports = router;

@@ -88,7 +88,7 @@ class TodoController {
         id: Joi.string().required(),
       });
 
-      const { error, value } = requestSchema.validate(req.body);
+      const { error, value } = requestSchema.validate(req.params);
       if (error) return response(res, 400, error.details[0].message);
 
       const deletedTodo = await ToDo.findByIdAndDelete(value.id);
@@ -98,6 +98,10 @@ class TodoController {
       response(res, 500, "An unknown error occurred");
       return console.log(error);
     }
+  }
+
+  static async routeNotFound(req, res) {
+    return response(res, 404, "Route not found");
   }
 }
 
