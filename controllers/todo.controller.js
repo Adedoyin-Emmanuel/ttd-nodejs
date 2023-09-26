@@ -17,81 +17,57 @@ class TodoController {
   }
 
   static async getAll(req, res) {
-    try {
-      const allTodos = await ToDo.find();
-      return response(res, 200, "Todos fetched successfully", allTodos);
-    } catch (error) {
-      response(res, 500, "An unknown error occured");
-      return console.log(error);
-    }
+    const allTodos = await ToDo.finds();
+    return response(res, 200, "Todos fetched successfully", allTodos);
   }
 
   static async getById(req, res) {
-    try {
-      const requestSchema = Joi.object({
-        id: Joi.string().required(),
-      });
+    const requestSchema = Joi.object({
+      id: Joi.string().required(),
+    });
 
-      const { error, value } = requestSchema.validate(req.params);
-      if (error) return response(res, 400, error.details[0].message);
+    const { error, value } = requestSchema.validate(req.params);
+    if (error) return response(res, 400, error.details[0].message);
 
-      const todo = await ToDo.findById(value.id);
-      if (!todo) return response(res, 404, "Todo not found");
-      return response(res, 200, "Todo fetched successfully", todo);
-    } catch (error) {
-      response(res, 500, "An unknown error occurred");
-      return console.log(error);
-    }
+    const todo = await ToDo.findById(value.id);
+    if (!todo) return response(res, 404, "Todo not found");
+    return response(res, 200, "Todo fetched successfully", todo);
   }
 
   static async update(req, res) {
-    try {
-      const requestSchema = Joi.object({
-        id: Joi.string().required(),
-        name: Joi.string().required().max(500),
-        status: Joi.boolean().required(),
-      });
+    const requestSchema = Joi.object({
+      id: Joi.string().required(),
+      name: Joi.string().required().max(500),
+      status: Joi.boolean().required(),
+    });
 
-      const { error, value } = requestSchema.validate(req.body);
-      if (error) return response(res, 400, error.details[0].message);
-      const updatedTodo = await ToDo.findByIdAndUpdate(
-        value.id,
-        {
-          name: value.name,
-          status: value.status,
-          updatedAt: Date.now(),
-        },
-        { new: true }
-      );
+    const { error, value } = requestSchema.validate(req.body);
+    if (error) return response(res, 400, error.details[0].message);
+    const updatedTodo = await ToDo.findByIdAndUpdate(
+      value.id,
+      {
+        name: value.name,
+        status: value.status,
+        updatedAt: Date.now(),
+      },
+      { new: true }
+    );
 
-      if (!updatedTodo) return response(res, 404, "Todo not found");
-      return response(res, 200, "Todo updated successfully", updatedTodo);
-    } catch (error) {
-      response(res, 500, "An unknown error occurred");
-      return console.log(error);
-    }
+    if (!updatedTodo) return response(res, 404, "Todo not found");
+    return response(res, 200, "Todo updated successfully", updatedTodo);
   }
 
   static async delete(req, res) {
-    try {
-      const requestSchema = Joi.object({
-        id: Joi.string().required(),
-      });
+    const requestSchema = Joi.object({
+      id: Joi.string().required(),
+    });
 
-      const { error, value } = requestSchema.validate(req.params);
-      if (error) return response(res, 400, error.details[0].message);
+    const { error, value } = requestSchema.validate(req.params);
+    if (error) return response(res, 400, error.details[0].message);
 
-      const deletedTodo = await ToDo.findByIdAndDelete(value.id);
-      if (!deletedTodo) return response(res, 404, "Todo not found");
-      return response(res, 200, "Todo deleted successfully");
-    } catch (error) {
-      response(res, 500, "An unknown error occurred");
-      return console.log(error);
-    }
-  }
-
-  static async routeNotFound(req, res) {
-    return response(res, 404, "Route not found");
+    const deletedTodo = await ToDo.findByIdAndDelete(value.id);
+    if (!deletedTodo) return response(res, 404, "Todo not found");
+    return response(res, 200, "Todo deleted successfully");
   }
 }
 
