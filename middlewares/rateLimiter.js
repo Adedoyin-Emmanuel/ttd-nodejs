@@ -1,7 +1,7 @@
 const { rateLimit } = require("express-rate-limit");
 const config = require("config");
 
-const limiter = rateLimit({
+const rateLimiter = rateLimit({
   windowMs: 60 * 1000,
   max: config.get("App.request-limit"),
   message: {
@@ -14,4 +14,4 @@ const limiter = rateLimit({
 
 console.log(config.get("App.request-limit"));
 
-module.exports = { limiter };
+module.exports = { rateLimiter };

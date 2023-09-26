@@ -1,5 +1,7 @@
-const { limiter } = require("./rateLimiter");
+const { rateLimiter } = require("./rateLimiter");
+const {errorHandler } = require("./error");
 
 module.exports = {
-  limiter,
+  rateLimiter,
+  errorHandler,
 };

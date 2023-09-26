@@ -5,25 +5,15 @@ const _ = require("lodash");
 
 class TodoController {
   static async create(req, res) {
-    try {
-      const requestSchema = Joi.object({
-        name: Joi.string().required().max(500),
-      });
+    const requestSchema = Joi.object({
+      name: Joi.string().required().max(500),
+    });
 
-      const { error, value } = requestSchema.validate(req.body);
-      if (error) return response(res, 400, error.details[0].message);
+    const { error, value } = requestSchema.validate(req.body);
+    if (error) return response(res, 400, error.details[0].message);
 
-      const todoCreationResult = await ToDo.create(value);
-      return response(
-        res,
-        201,
-        "Todo created successfully",
-        todoCreationResult
-      );
-    } catch (error) {
-      response(res, 500, "An unknown error occured");
-      return console.log(error);
-    }
+    const todoCreationResult = await ToDo.create(value);
+    return response(res, 201, "Todo created successfully", todoCreationResult);
   }
 
   static async getAll(req, res) {
