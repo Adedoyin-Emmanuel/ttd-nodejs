@@ -1,4 +1,4 @@
-const { add, subtract, absolute } = require("./../../libs/numbers");
+const { add, subtract, absolute } = require("./../../../libs/numbers");
 
 describe("Numbers", () => {
   it("should add a number to the other", () => {

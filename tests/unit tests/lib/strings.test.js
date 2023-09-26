@@ -1,4 +1,4 @@
-const { printName } = require("./../../libs/strings");
+const { printName } = require("./../../../libs/strings");
 
 describe("Strings", () => {
   it("should throw an error if argument is not a string", () => {

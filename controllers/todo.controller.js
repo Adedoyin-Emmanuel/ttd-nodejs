@@ -17,7 +17,7 @@ class TodoController {
   }
 
   static async getAll(req, res) {
-    const allTodos = await ToDo.finds();
+    const allTodos = await ToDo.find();
     return response(res, 200, "Todos fetched successfully", allTodos);
   }
 

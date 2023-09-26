@@ -12,7 +12,6 @@ const rateLimiter = rateLimit({
   },
 });
 
-console.log(config.get("App.request-limit"));
 
 module.exports = {
   rateLimiter

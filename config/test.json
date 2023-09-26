@@ -1,0 +1,5 @@
+{
+  "App": {
+    "request-limit": 100
+  }
+}

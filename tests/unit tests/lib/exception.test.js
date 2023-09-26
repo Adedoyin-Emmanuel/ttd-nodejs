@@ -1,4 +1,4 @@
-const { throwError, throwErrorUsingCatch } = require("./../../libs/exception");
+const { throwError, throwErrorUsingCatch } = require("./../../../libs/exception");
 
 describe("Exception", () => {
   it("should throw a custom error we defined when calle", () => {
