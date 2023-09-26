@@ -1,5 +1,7 @@
 {
   "App": {
-    "request-limit": 100
+    "request-limit": 100,
+    "database-url": "mongodb://localhost/todoapp"
+
   }
 }

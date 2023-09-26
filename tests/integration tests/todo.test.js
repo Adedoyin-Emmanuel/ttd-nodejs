@@ -1,4 +1,5 @@
 const request = require("supertest");
+const { ToDo } = require("./../../models");
 let server;
 
 describe("/api/todos", () => {
