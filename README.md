@@ -61,13 +61,14 @@ So far, I wrote my first integration test `26/09/2023` it was awesome to see it 
 
 So unlike **Unit Testing**, integration tests covers the entire application, so you test the **Routes, Controllers and Middlewares** in a go, it runs everything in real time, writing integration tests makes you super confident of your application. So basically, let me summarize what've learnt and how best to write integration tests.
 
-
 ### Writing Integration Tests 🧪
 
-Writing integration tests is super fun because you write codes to tests your application. So basically you would want to prepare your application to write the tests. You need to export your express server so you can import it for tests. Then you need to configure your application to use a test database during **Integration Testing**  you can achieve this with the **config** module. Writing Integration Tests would be super easy if you are famiiliar with writing unit tests.  Basically you would be writing tests for the **API Response** **Status and Status Code** and also the **Response Body**. The methods for testing everything are already provided by **Jest**, the test framework that I mentioned above. We would be using a package called **Supertest** to make real time **API Requests** which would serve use the response and other good stuffs like a real time **API Response** when testing with **Postman or Insomnia**.
-
+Writing integration tests is super fun because you write codes to tests your application. So basically you would want to prepare your application to write the tests. You need to export your express server so you can import it for tests. Then you need to configure your application to use a test database during **Integration Testing** you can achieve this with the **config** module. Writing Integration Tests would be super easy if you are famiiliar with writing unit tests. Basically you would be writing tests for the **API Response** **Status and Status Code** and also the **Response Body**. The methods for testing everything are already provided by **Jest**, the test framework that I mentioned above. We would be using a package called **Supertest** to make real time **API Requests** which would serve use the response and other good stuffs like a real time **API Response** when testing with **Postman or Insomnia**.
 
 #### Backend API 💻
 
 For the sake of writing Integrated Test, I would be building a simple **TODO** application backend. Just something simple :)
 
+Right now, I'm done with the **Todo-Backend-Api** basically it is a simple API for a **TODO** application. I might take it up to the next level to create an application like **Trello or Clickup**. May God give me strength for it 😁.
+
+I would be updating the **Todo-Api** to include a status property to track the state of a particular todo. Also, I would be writing the documentation for the endpoints when I'm done writing **Integration-Test**
