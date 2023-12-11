@@ -46,12 +46,10 @@ So far, I've learned **Unit Testing** and the best practices involved in unit te
 
 4. **Unit Testing Objects**
    This involves writing Unit Tests for functions or modules that return objects. We have some **matchers** in **Jest** that we use for this. They include _expect(result).toHaveProperty()_ then we can pass key value pairs as arguments. We also have the _toMatchObject()_ method which I love to use most times.
-   That's like the most used matcher for unit testing arrays .
+   That's like the most used matcher for unit testing objects .
 
 5. **Unit Testing Exceptions**
-   This invlves writing Unit Tests for functions or modules that throws exceptions somewhere in the program.
-   **Jest** that we use for this. They include _expect(result).toHaveProperty()_ then we can pass key value pairs as arguments. We also have the _toMatchObject()_ method which I love to use most times.
-   That's like the most used matcher for unit testing arrays .
+   This invlves writing Unit Tests for functions or modules that throws exceptions somewhere in the program. There are some matchers in **Jest** that we use for this. They include _expect(result).toThrow()_. That's like the most common one, I feel there should be a way to test for the exception message but I haven't found out. Probably when I've data I would check.
 
 ### Integration Testing 🧪
 
