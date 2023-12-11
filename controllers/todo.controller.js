@@ -28,7 +28,6 @@ class TodoController {
     });
 
     const { error, value } = requestSchema.validate(req.params);
-    if (error) return response(res, 400, error.details[0].message);
 
     const todo = await ToDo.findById(value.id);
     if (!todo) return response(res, 404, "Todo not found");
@@ -63,8 +62,7 @@ class TodoController {
       id: Joi.string().required(),
     });
 
-    const { error, value } = requestSchema.validate(req.params);
-    if (error) return response(res, 400, error.details[0].message);
+    const { value } = requestSchema.validate(req.params);
 
     const deletedTodo = await ToDo.findByIdAndDelete(value.id);
     if (!deletedTodo) return response(res, 404, "Todo not found");

@@ -1,4 +1,5 @@
 const request = require("supertest");
+const { default: mongoose } = require("mongoose");
 const { ToDo } = require("./../../models");
 let server;
 const BASE_ENDPOINT = "/api/todos";
@@ -39,6 +40,11 @@ describe("/api/todos", () => {
       const response = await request(server).get(BASE_ENDPOINT);
       expect(response.status).toBe(200);
       expect(response.body.data[0]).toHaveProperty("name", todo.name);
+    });
+
+    it("should return 400 if name is not passed in request body", async () => {
+      const response = await request(server).post(BASE_ENDPOINT);
+      expect(response.status).toBe(400);
     });
   });
 
@@ -83,6 +89,52 @@ describe("/api/todos", () => {
       expect(response.status).toBe(200);
       expect(response.body.data).toHaveProperty("name", todo.name);
     });
+
+    it("should return a 404 error if the TODO Id is valid but not in the database", async () => {
+      const todoId = "6576c9bf97a1ef484661f101";
+      const response = await request(server).get(`${BASE_ENDPOINT}/${todoId}`);
+
+      expect(response.status).toBe(404);
+    });
+  });
+
+  //update a todo
+
+  describe("UPDATE /:id", () => {
+    let todo;
+
+    beforeEach(async () => {
+      todo = new ToDo({ name: "Read the book Welcome HolySpirit" });
+      await todo.save();
+    });
+
+    it("should return 404 if TODO Id is invalid", async () => {
+      const response = await request(server).put(`${BASE_ENDPOINT}/1`);
+
+      expect(response.status).toBe(404);
+    });
+
+    it("should return a 404 if TODO Id is not found", async () => {
+      const todoId = "6576c9bf97a1ef484661f102";
+      const response = await request(server).put(`${BASE_ENDPOINT}/${todoId}`);
+
+      expect(response.status).toBe(404);
+    });
+
+    it("should return a 200 on TODO update", async () => {
+      const response = await request(server).put(`${BASE_ENDPOINT}`).send({
+        id: todo._id,
+        name: "Read the book Good Morning HolySpirit",
+        status: true,
+      });
+
+      expect(response.status).toBe(200);
+      expect(response.body.data).not.toBeNull();
+      expect(response.body.data).toHaveProperty(
+        "name",
+        "Read the book Good Morning HolySpirit"
+      );
+    });
   });
 
   //delete a todo
@@ -93,8 +145,15 @@ describe("/api/todos", () => {
       todo = new ToDo({ name: "Read the book Welcome HolySpirit" });
       await todo.save();
     });
-    it("should return 404 if TODO Id is not found or invalid", async () => {
+    it("should return 404 if TODO Id is invalid", async () => {
       const response = await request(server).get(`${BASE_ENDPOINT}/1`);
+
+      expect(response.status).toBe(404);
+    });
+
+    it("should return 404 if TODO Id is not found", async () => {
+      const todoId = "6576c9bf97a1ef484661f102";
+      const response = await request(server).get(`${BASE_ENDPOINT}/${todoId}`);
 
       expect(response.status).toBe(404);
     });
