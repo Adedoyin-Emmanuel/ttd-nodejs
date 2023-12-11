@@ -1,6 +1,5 @@
 const request = require("supertest");
 const { ToDo } = require("./../../models");
-const { before } = require("lodash");
 let server;
 const BASE_ENDPOINT = "/api/todos";
 
@@ -82,7 +81,6 @@ describe("/api/todos", () => {
       );
 
       expect(response.status).toBe(200);
-      console.log(response.body.data);
       expect(response.body.data).toHaveProperty("name", todo.name);
     });
   });
@@ -90,8 +88,24 @@ describe("/api/todos", () => {
   //delete a todo
 
   describe("DELETE /:id", () => {
+    let todo;
+    beforeEach(async () => {
+      todo = new ToDo({ name: "Read the book Welcome HolySpirit" });
+      await todo.save();
+    });
     it("should return 404 if TODO Id is not found or invalid", async () => {
-        
-      })
+      const response = await request(server).get(`${BASE_ENDPOINT}/1`);
+
+      expect(response.status).toBe(404);
+    });
+
+    it("should delete the TODO from the database", async () => {
+      const response = await request(server).delete(
+        `${BASE_ENDPOINT}/${todo._id}`
+      );
+
+      expect(response.status).toBe(200);
+      expect(response.body.data).not.toBeNull();
+    });
   });
 });

@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const { TodoController } = require("./../controllers");
 const { validateObjectId } = require("./../middlewares");
-const { validate } = require("../models/todo.model");
 
 router.get("/", TodoController.getAll);
 
