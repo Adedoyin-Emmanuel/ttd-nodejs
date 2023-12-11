@@ -2,6 +2,7 @@ const { ToDo } = require("./../models");
 const Joi = require("joi");
 const { response } = require("./../utils");
 const _ = require("lodash");
+const { default: mongoose } = require("mongoose");
 
 class TodoController {
   static async create(req, res) {
@@ -28,6 +29,9 @@ class TodoController {
 
     const { error, value } = requestSchema.validate(req.params);
     if (error) return response(res, 400, error.details[0].message);
+    if (!mongoose.Types.ObjectId.isValid(value.id)) {
+      return response(res, 404, "Invalid object id");
+    }
 
     const todo = await ToDo.findById(value.id);
     if (!todo) return response(res, 404, "Todo not found");
