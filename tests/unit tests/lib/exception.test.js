@@ -1,7 +1,7 @@
 const { throwError, throwErrorUsingCatch } = require("./../../../libs/exception");
 
 describe("Exception", () => {
-  it("should throw a custom error we defined when calle", () => {
+  it("should throw a custom error we defined when called", () => {
     expect(throwError).toThrow();
   });
 
